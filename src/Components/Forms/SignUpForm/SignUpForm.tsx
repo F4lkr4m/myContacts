@@ -9,7 +9,6 @@ const SignUpForm = () => {
     <form className="form">
       <Fonts type="h3" text="Присоединяйтесь!" />
       <Input type="text" placeholder="username" />
-      <Input type="email" placeholder="email" />
       <Input type="password" placeholder="password" />
       <Input type="password" placeholder="password repeat" />
       <Button label="Создать аккаунт" />
