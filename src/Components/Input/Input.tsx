@@ -10,7 +10,7 @@ interface InputI {
 
 const Input = (props: InputI) => {
   return (
-    <label>
+    <label className={'input__label'}>
       <input 
         className={'input'}
         type={props.type} 
