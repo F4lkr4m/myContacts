@@ -1,0 +1,33 @@
+button {
+  outline: none;
+  border: none;
+}
+
+.button {
+  display: inline-grid;
+  align-items: center;
+
+  box-sizing: border-box;
+  padding: 0 28px;
+
+  line-height: 1;
+  font-size: 16px;
+  font-family: inherit;
+  color: rgb(0, 102, 255);
+
+  height: 48px;
+
+  border: 1px solid rgb(0, 102, 255);
+  border-radius: 8px;
+
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgb(229, 240, 255);
+}
+
+.button:active {
+  background-color: rgb(179, 211, 255);
+}
