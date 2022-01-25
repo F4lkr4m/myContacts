@@ -3,6 +3,9 @@ import Button from "../Button/Button";
 import Fonts from "../Fonts/Fonts";
 import Input from "../Input/Input";
 import './ContactList.css';
+import searchSvg from '../../Assets/search.svg';
+import editSvg from '../../Assets/edit.svg';
+import deleteSvg from '../../Assets/delete.svg';
 
 const ContactList = () => {
   return (
@@ -10,7 +13,7 @@ const ContactList = () => {
       <Fonts type="h1" text="Ваша контактная книжка" />
       <div className="contact-list__search-box">
         <Input type="text" placeholder="Найти контакт" />
-        <Button label="Найти" />
+        <Button label="Найти" icon={searchSvg} />
       </div>
       <Button label="Добавить контакт" />
       <ul className="contact-list__ul">
@@ -19,44 +22,8 @@ const ContactList = () => {
           <Fonts type="p" text="7-(916)-343-17-00" />
           <Fonts type="p" text="Какое-то описания для контакта или заметка" />
           <div className="contact-list__item-row">
-            <Button label="Редактировать" />
-            <Button label="Удалить" />
-          </div>
-        </li>
-        <li className="contact-list__item">
-          <Fonts type="h4" text="Сергей Щербаков" />
-          <Fonts type="p" text="7-(916)-343-17-00" />
-          <Fonts type="p" text="Какое-то описания для контакта или заметка" />
-          <div className="contact-list__item-row">
-            <Button label="Редактировать" />
-            <Button label="Удалить" />
-          </div>
-        </li>
-        <li className="contact-list__item">
-          <Fonts type="h4" text="Сергей Щербаков" />
-          <Fonts type="p" text="7-(916)-343-17-00" />
-          <Fonts type="p" text="Какое-то описания для контакта или заметка" />
-          <div className="contact-list__item-row">
-            <Button label="Редактировать" />
-            <Button label="Удалить" />
-          </div>
-        </li>
-        <li className="contact-list__item">
-          <Fonts type="h4" text="Сергей Щербаков" />
-          <Fonts type="p" text="7-(916)-343-17-00" />
-          <Fonts type="p" text="Какое-то описания для контакта или заметка" />
-          <div className="contact-list__item-row">
-            <Button label="Редактировать" />
-            <Button label="Удалить" />
-          </div>
-        </li>
-        <li className="contact-list__item">
-          <Fonts type="h4" text="Сергей Щербаков" />
-          <Fonts type="p" text="7-(916)-343-17-00" />
-          <Fonts type="p" text="Какое-то описания для контакта или заметка" />
-          <div className="contact-list__item-row">
-            <Button label="Редактировать" />
-            <Button label="Удалить" />
+            <Button icon={editSvg} label="Редактировать" />
+            <Button icon={deleteSvg} label="Удалить" />
           </div>
         </li>
       </ul>
