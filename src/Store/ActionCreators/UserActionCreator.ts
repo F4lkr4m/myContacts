@@ -1,4 +1,4 @@
-import { userActions } from "../Actions/User"
+import { userActions } from "../Actions/UserActions"
 
 interface userSignInPayload {
   username: string;
@@ -48,4 +48,4 @@ export const userLogOut = () => {
   return action;
 };
 
-export type actionType = userLogOutAction | userSignInAction | userSignUpAction;
+export type UserActionsTypes = userLogOutAction | userSignInAction | userSignUpAction;
