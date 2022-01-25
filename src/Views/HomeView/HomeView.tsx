@@ -1,4 +1,5 @@
 import React from "react";
+import AddContactModal from "../../Components/AddContactModal/AddContactModal";
 import Button from "../../Components/Button/Button";
 import ContactList from "../../Components/ContactList/ContactList";
 import Fonts from "../../Components/Fonts/Fonts";
@@ -14,6 +15,7 @@ const HomeView = () => {
       <main className="home-view__main">
         <ContactList />
       </main>
+      <AddContactModal />
     </div>
   )
 }
