@@ -1,6 +1,6 @@
 import { userActions } from "../Actions/UserActions"
 
-interface userSignInPayload {
+export  interface userSignInPayload {
   username: string;
   password: string;
 }
@@ -18,7 +18,7 @@ export const userSignIn = (payload: userSignInPayload) => {
   return action;
 };
 
-interface userSignUpPayload {
+export interface userSignUpPayload {
   username: string;
   password: string;
   passwordRepeat: string;

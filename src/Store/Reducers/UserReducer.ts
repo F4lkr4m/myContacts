@@ -1,7 +1,7 @@
 import { UserActionsTypes } from "../ActionCreators/UserActionCreator";
 import { userActions } from "../Actions/UserActions";
 
-interface UserState {
+export interface UserState {
   auth: boolean;
   username: string;
 }
