@@ -8,6 +8,8 @@ import Fonts from "../../Components/Fonts/Fonts";
 import { userSignIn, userSignInPayload } from "../../Store/ActionCreators/UserActionCreator";
 import { rootReducerType } from "../../Store/Store";
 import './HomeView.css';
+import { constants } from "../../Utils/Constants";
+import { Navigate } from 'react-router-dom';
 
 interface HomeViewI {
   auth: boolean;
@@ -20,6 +22,10 @@ const HomeView = (props: HomeViewI) => {
     console.log(props.auth, props.loginUser, props.username);
     props.loginUser({username: 'testuser', password: 'smth'});
   };
+
+  if (!props.auth) {
+    return <Navigate to={constants.appPaths.sign} />
+  }
 
   return (
     <div className="home-view">
