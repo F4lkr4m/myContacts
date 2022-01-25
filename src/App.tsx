@@ -4,15 +4,11 @@ import Button from './Components/Button/Button';
 import Fonts from './Components/Fonts/Fonts';
 import Input from './Components/Input/Input';
 import TextArea from './Components/TextArea/TextArea';
+import SignView from './Views/SignView/SignView';
 
 function App() {
   return (
-    <>
-      <Fonts type="h1" color="black" text="Какой-то текст" />
-      <Button label="Нажми на меня" />
-      <Input type="email" placeholder="Email" />
-      <TextArea placeholder="Заметка для пользователя" />
-    </>
+    <SignView />
   );
 }
 

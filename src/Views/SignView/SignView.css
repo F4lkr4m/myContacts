@@ -1,0 +1,46 @@
+.sign-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+}
+
+.sign-view__logo {
+  display: inline-flex;
+  justify-content: center;
+  margin-bottom: 64px;
+}
+
+.sign-view__forms {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  justify-items: center;
+  height: 100%;
+  margin-top: 124px;
+  margin-bottom: auto;
+}
+
+.sign-view__forms form {
+  width: 500px;
+}
+
+@media (max-width: 1100px) {
+  .sign-view__forms {
+    margin-top: 0px;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+    row-gap: 24px;
+  }
+}
+
+@media (max-width: 500px) {
+  .sign-view__forms form {
+    width: 300px;
+  }
+
+  .sign-view__logo {
+    margin-bottom: 24px;
+  }
+}

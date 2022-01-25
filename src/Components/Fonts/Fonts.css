@@ -32,6 +32,10 @@ p {
   font-size: 16px;
 }
 
-.blue {
+.font_blue {
   color: rgb(0, 102, 255);
+}
+
+.font_white {
+  color: white;
 }
