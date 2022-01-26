@@ -8,6 +8,12 @@ export  interface userDataPayload {
   password: string;
 }
 
+export interface userDataSignUpPayload {
+  username: string;
+  password: string;
+  repeatPassword: string;
+}
+
 // ACTIONS INTERFACES
 interface userSignInAction {
   type: userActions.USER_SIGNIN;
@@ -44,7 +50,7 @@ export const signIn = (payload: userDataPayload) => {
   };
 }
 
-export const signUp = (payload: userDataPayload) => {
+export const signUp = (payload: userDataSignUpPayload) => {
   return (dispatch: Dispatch) => {
     setTimeout(() => {
       dispatch(userSignIn(payload.username));

@@ -5,7 +5,7 @@ import AddContactModal from "../../Components/AddContactModal/AddContactModal";
 import Button from "../../Components/Button/Button";
 import ContactList from "../../Components/ContactList/ContactList";
 import Fonts from "../../Components/Fonts/Fonts";
-import { signIn, userDataPayload } from "../../Store/ActionCreators/UserActionCreators";
+import { logOut } from "../../Store/ActionCreators/UserActionCreators";
 import { UserState } from "../../Store/Reducers/UserReducer";
 import { rootReducerType } from "../../Store/Store";
 import './HomeView.css';
@@ -14,12 +14,12 @@ import { Navigate } from 'react-router-dom';
 
 interface HomeViewI {
   user: UserState;
-  loginUser: (payload: userDataPayload) => void;
+  logOutUser: () => void;
 }
 
 const HomeView = (props: HomeViewI) => {
-  const onClick = () => {
-    props.loginUser({username: 'testuser', password: 'smth'});
+  const logOutHandler = () => {
+    props.logOutUser();
   };
   if (!props.user.auth) {
     return (<Navigate to={constants.appPaths.sign} />);
@@ -29,7 +29,7 @@ const HomeView = (props: HomeViewI) => {
     <div className="home-view">
       <header className="home-view__header">
         <Fonts type="p" text="Сергей Щербаков" />
-        <Button onClick={onClick} label="Выйти" />
+        <Button onClick={logOutHandler} label="Выйти" />
       </header>
       <main className="home-view__main">
         <ContactList />
@@ -50,7 +50,7 @@ const mapStateToProps = (combinedReducer: rootReducerType) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    loginUser: bindActionCreators(signIn, dispatch),
+    logOutUser: bindActionCreators(logOut, dispatch),
   }
 }
 

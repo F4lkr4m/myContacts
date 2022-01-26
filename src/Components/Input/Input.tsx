@@ -4,7 +4,7 @@ import './Input.css';
 interface InputI {
   type: 'tel' | 'text' | 'password' | 'email';
   placeholder?: string;
-  onChange?: () => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: () => void;
 }
 

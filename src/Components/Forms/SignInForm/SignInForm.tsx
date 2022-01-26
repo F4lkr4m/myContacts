@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../../Button/Button";
 import Fonts from "../../Fonts/Fonts";
 import Input from "../../Input/Input";
@@ -15,21 +15,32 @@ interface SignInFormI {
 }
 
 const SignInForm = (props: SignInFormI) => {
-  const kek = (event: React.MouseEvent) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const usernameHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUsername(event.currentTarget.value);
+  };
+
+  const passwordHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.currentTarget.value);
+  };
+
+  const signInHandler = (event: React.MouseEvent) => {
     event.preventDefault();
     props.signIn({
-      username: 'kek',
-      password: 'kek',
+      username: username,
+      password: password,
     });
   };
 
   return (
     <form className="form">
       <Fonts type="h3" text="Уже зарегистрированы?" />
-      <Input type="email" placeholder="email" />
-      <Input type="password" placeholder="password" />
+      <Input type="text" onChange={usernameHandler} placeholder="username" />
+      <Input type="password" onChange={passwordHandler} placeholder="password" />
       <Error message={props.error}/>
-      <Button onClick={kek} label="Войти" />
+      <Button onClick={signInHandler} label="Войти" />
     </form>
   )
 }
