@@ -26,7 +26,7 @@ interface userLogOutAction {
 
 // ACTION CREATORS
 
-const userSignIn = (username: string) => {
+const userSignInAC = (username: string) => {
   const action: userSignInAction = {
     type: userActions.USER_SIGNIN,
     payload: username,
@@ -34,7 +34,7 @@ const userSignIn = (username: string) => {
   return action;
 };
 
-const userLogOut = () => {
+const userLogOutAC = () => {
   const action: userLogOutAction = {
     type: userActions.USER_LOGOUT,
   }
@@ -45,7 +45,7 @@ export const signIn = (payload: userDataPayload) => {
   return (dispatch: Dispatch) => {
     setTimeout(() => {
       console.log('DISPATCH');
-      dispatch(userSignIn(payload.username));
+      dispatch(userSignInAC(payload.username));
     }, 1000);
   };
 }
@@ -53,14 +53,14 @@ export const signIn = (payload: userDataPayload) => {
 export const signUp = (payload: userDataSignUpPayload) => {
   return (dispatch: Dispatch) => {
     setTimeout(() => {
-      dispatch(userSignIn(payload.username));
+      dispatch(userSignInAC(payload.username));
     }, 1000);
   };
 }
 
 export const logOut = () => {
   return (dispatch: Dispatch) => {
-    dispatch(userLogOut());
+    dispatch(userLogOutAC());
   };
 }
 
