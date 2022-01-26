@@ -5,13 +5,17 @@ import Input from "../Input/Input";
 import TextArea from "../TextArea/TextArea";
 import './AddContactModal.css';
 
-const AddContactModal = () => {
+interface AddContactModalI {
+  onClose: () => void;
+}
+
+const AddContactModal = (props: AddContactModalI) => {
   return (
-    <div className="modal-wrapper">
+    <div className="modal-wrapper modal--open">
       <div className="modal">
         <div className="modal__row">
           <Fonts type="h4" text="Добавить контакт" />
-          <Button label="Закрыть" />
+          <Button onClick={props.onClose} label="Закрыть" />
         </div>
       <Input type="text" placeholder="Имя" />
       <Input type="text" placeholder="Фамилия" />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../Button/Button";
 import Fonts from "../Fonts/Fonts";
 import Input from "../Input/Input";
@@ -6,8 +6,15 @@ import './ContactList.css';
 import searchSvg from '../../Assets/search.svg';
 import editSvg from '../../Assets/edit.svg';
 import deleteSvg from '../../Assets/delete.svg';
+import AddContactModal from "../AddContactModal/AddContactModal";
 
 const ContactList = () => {
+  const [modal, setModal] = useState(<></>);
+
+  const openModal = () => {
+    setModal(<AddContactModal onClose={() => setModal(<></>)} />);
+  }
+
   return (
     <div className="contact-list">
       <Fonts type="h1" text="Ваша контактная книжка" />
@@ -15,7 +22,7 @@ const ContactList = () => {
         <Input type="text" placeholder="Найти контакт" />
         <Button label="Найти" icon={searchSvg} />
       </div>
-      <Button label="Добавить контакт" />
+      <Button onClick={openModal} label="Добавить контакт" />
       <ul className="contact-list__ul">
         <li className="contact-list__item">
           <Fonts type="h4" text="Сергей Щербаков" />
@@ -27,6 +34,7 @@ const ContactList = () => {
           </div>
         </li>
       </ul>
+      {modal}
     </div>
   )
 }

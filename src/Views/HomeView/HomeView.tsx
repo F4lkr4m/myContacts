@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import AddContactModal from "../../Components/AddContactModal/AddContactModal";
 import Button from "../../Components/Button/Button";
 import ContactList from "../../Components/ContactList/ContactList";
 import Fonts from "../../Components/Fonts/Fonts";
@@ -28,13 +27,12 @@ const HomeView = (props: HomeViewI) => {
   return (
     <div className="home-view">
       <header className="home-view__header">
-        <Fonts type="p" text="Сергей Щербаков" />
+        <Fonts type="p" text={props.user.username} />
         <Button onClick={logOutHandler} label="Выйти" />
       </header>
       <main className="home-view__main">
         <ContactList />
       </main>
-      <AddContactModal />
     </div>
   )
 }
