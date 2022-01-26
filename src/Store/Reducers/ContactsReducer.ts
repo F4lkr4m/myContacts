@@ -13,19 +13,18 @@ export interface ContactsState {
   contacts: Array<Contact>;
 }
 
-const initialContactsState: ContactsState = {
-  contacts: [{
-    id: 'id-1',
-    name: 'Сергей',
-    surname: 'Щербаков',
-    tel: 'Лолер',
-    desc: 'Какое-то описание этого гандона'
-  }],
+let initialContactsState: ContactsState = {
+  contacts: [],
+};
+if (localStorage['contacts']) {
+  initialContactsState.contacts = JSON.parse(localStorage['contacts']);
 }
+
 
 export const contactsReducer = (state: ContactsState = initialContactsState, action: contactsActionTypes): ContactsState => {
   switch(action.type) {
     case contactsActions.UPDATE_CONTACTS: {
+      localStorage['contacts'] = JSON.stringify(action.payload.contacts);
       return action.payload;
     }
     default: 
