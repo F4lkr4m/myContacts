@@ -2,9 +2,20 @@ import React from "react";
 import Fonts from "../../Components/Fonts/Fonts";
 import SignInForm from "../../Components/Forms/SignInForm/SignInForm";
 import SignUpForm from "../../Components/Forms/SignUpForm/SignUpForm";
+import { UserState } from "../../Store/Reducers/UserReducer";
+import { Navigate } from "react-router-dom";
+import { constants } from "../../Utils/Constants";
 import './SignView.css';
 
-const SignView = () => {
+// interface SignViewI {
+//   user: UserState;
+// }
+
+const SignView = (/*props: SignViewI*/) => {
+  // if (props.user.auth) {
+  //   return (<Navigate to={constants.appPaths.home} />);
+  // }
+
   return (
     <div className="sign-view">
       <div className="sign-view__logo">

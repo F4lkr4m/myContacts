@@ -7,12 +7,20 @@ import { constants } from './Utils/Constants';
 import HomeView from './Views/HomeView/HomeView';
 import SignView from './Views/SignView/SignView';
 
-function App() {
+export const userContext = React.createContext({auth: false, username: ''});
+
+const App = () => {
   return (
     <Provider store={store}>
       <Routes>
-        <Route path={constants.appPaths.sign} element={<SignView />} />
-        <Route path={constants.appPaths.home} element={<HomeView />} />
+        <Route 
+          path={constants.appPaths.sign} 
+          element={<SignView />}
+        />
+        <Route 
+          path={constants.appPaths.home} 
+          element={<HomeView />}
+        />
       </Routes>
     </Provider>
   );

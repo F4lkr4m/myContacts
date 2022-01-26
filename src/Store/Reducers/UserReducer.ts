@@ -16,16 +16,9 @@ export const userReducer = (state: UserState = initialUserState, action: UserAct
     case userActions.USER_SIGNIN: {
       return {
         auth: true,
-        username: 'testuser',
+        username: action.payload,
       };
-    }
-    case userActions.USER_SIGNUP: {
-      return {
-        auth: true,
-        username: 'testuser',
-      };
-    }
-      
+    } 
     case userActions.USER_LOGOUT: {
       return {
         auth: false,

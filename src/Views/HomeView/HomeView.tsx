@@ -5,26 +5,24 @@ import AddContactModal from "../../Components/AddContactModal/AddContactModal";
 import Button from "../../Components/Button/Button";
 import ContactList from "../../Components/ContactList/ContactList";
 import Fonts from "../../Components/Fonts/Fonts";
-import { userSignIn, userSignInPayload } from "../../Store/ActionCreators/UserActionCreator";
+import { signIn, userDataPayload } from "../../Store/ActionCreators/UserActionCreator";
+import { UserState } from "../../Store/Reducers/UserReducer";
 import { rootReducerType } from "../../Store/Store";
 import './HomeView.css';
 import { constants } from "../../Utils/Constants";
 import { Navigate } from 'react-router-dom';
 
 interface HomeViewI {
-  auth: boolean;
-  username: string;
-  loginUser: (payload: userSignInPayload) => void;
+  user: UserState;
+  loginUser: (payload: userDataPayload) => void;
 }
 
 const HomeView = (props: HomeViewI) => {
   const onClick = () => {
-    console.log(props.auth, props.loginUser, props.username);
     props.loginUser({username: 'testuser', password: 'smth'});
   };
-
-  if (!props.auth) {
-    return <Navigate to={constants.appPaths.sign} />
+  if (!props.user.auth) {
+    return (<Navigate to={constants.appPaths.sign} />);
   }
 
   return (
@@ -43,14 +41,16 @@ const HomeView = (props: HomeViewI) => {
 
 const mapStateToProps = (combinedReducer: rootReducerType) => {
   return {
-    auth: combinedReducer.userReducer.auth,
-    username: combinedReducer.userReducer.username,
+    user: {
+      auth: combinedReducer.userReducer.auth,
+      username: combinedReducer.userReducer.username,
+    }
   };
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    loginUser: bindActionCreators(userSignIn, dispatch),
+    loginUser: bindActionCreators(signIn, dispatch),
   }
 }
 
