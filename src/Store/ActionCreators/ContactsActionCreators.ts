@@ -1,10 +1,11 @@
 import { Dispatch } from "redux"
+import { getId } from "../../Utils/IdGenerator"
 import { contactsActions } from "../Actions/ContactsAction"
 import { Contact, ContactsState } from "../Reducers/ContactsReducer"
 import { rootReducerType } from "../Store"
 
 
-interface contactPayload {
+export interface contactPayload {
   name: string;
   surname: string;
   tel: string;
@@ -33,7 +34,7 @@ export const addContact = (payload: contactPayload) => {
   return (dispatch: Dispatch, getState: () => rootReducerType) => {
     const currentContacts = getState().contactsReducer.contacts;
     currentContacts.push({
-      id: 'id-1',
+      id: getId(),
       ...payload,
     });
 

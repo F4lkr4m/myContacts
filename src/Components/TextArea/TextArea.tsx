@@ -3,6 +3,7 @@ import './TextArea.css';
 
 interface TextAreaI {
   placeholder?: string;
+  value?: string;
   onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
@@ -11,6 +12,7 @@ const TextArea = (props: TextAreaI) => {
     <textarea 
       className="textarea"
       placeholder={props.placeholder}
+      value={props.value}
       onChange={props.onChange}>
 
     </textarea>

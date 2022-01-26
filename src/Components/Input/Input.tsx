@@ -6,6 +6,7 @@ interface InputI {
   placeholder?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: () => void;
+  value?: string;
 }
 
 const Input = (props: InputI) => {
@@ -14,7 +15,8 @@ const Input = (props: InputI) => {
       <input 
         className={'input'}
         type={props.type} 
-        placeholder={props.placeholder} 
+        placeholder={props.placeholder}
+        value={props.value} 
         onChange={props.onChange} 
         onBlur={props.onBlur} />
     </label>

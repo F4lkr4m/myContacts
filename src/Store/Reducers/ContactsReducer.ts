@@ -14,7 +14,13 @@ export interface ContactsState {
 }
 
 const initialContactsState: ContactsState = {
-  contacts: [],
+  contacts: [{
+    id: 'id-1',
+    name: 'Сергей',
+    surname: 'Щербаков',
+    tel: 'Лолер',
+    desc: 'Какое-то описание этого гандона'
+  }],
 }
 
 export const contactsReducer = (state: ContactsState = initialContactsState, action: contactsActionTypes): ContactsState => {
