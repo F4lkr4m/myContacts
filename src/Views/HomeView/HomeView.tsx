@@ -20,6 +20,7 @@ const HomeView = (props: HomeViewI) => {
   const logOutHandler = () => {
     props.logOutUser();
   };
+
   if (!props.user.auth) {
     return (<Navigate to={constants.appPaths.sign} />);
   }

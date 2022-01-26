@@ -38,7 +38,7 @@
 
 @media (max-width: 500px) {
   .sign-view__forms form {
-    width: 300px;
+    width: 100%;
   }
 
   .sign-view__logo {
