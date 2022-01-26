@@ -6,15 +6,19 @@ import { UserState } from "../../Store/Reducers/UserReducer";
 import { Navigate } from "react-router-dom";
 import { constants } from "../../Utils/Constants";
 import './SignView.css';
+import { rootReducerType } from "../../Store/Store";
+import { connect } from "react-redux";
 
-// interface SignViewI {
-//   user: UserState;
-// }
+interface SignViewI {
+  user: UserState;
+}
 
-const SignView = (/*props: SignViewI*/) => {
-  // if (props.user.auth) {
-  //   return (<Navigate to={constants.appPaths.home} />);
-  // }
+const SignView = (props: SignViewI) => {
+  if (props.user.auth) {
+    return (<Navigate to={constants.appPaths.home} />);
+  }
+
+  console.log(props.user.auth);
 
   return (
     <div className="sign-view">
@@ -30,4 +34,13 @@ const SignView = (/*props: SignViewI*/) => {
   )
 }
 
-export default SignView;
+const mapStateToProps = (combinedReducer: rootReducerType) => {
+  return {
+    user: {
+      auth: combinedReducer.userReducer.auth,
+      username: combinedReducer.userReducer.username,
+    },
+  };
+}
+
+export default connect(mapStateToProps)(SignView);

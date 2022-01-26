@@ -5,7 +5,7 @@ import AddContactModal from "../../Components/AddContactModal/AddContactModal";
 import Button from "../../Components/Button/Button";
 import ContactList from "../../Components/ContactList/ContactList";
 import Fonts from "../../Components/Fonts/Fonts";
-import { signIn, userDataPayload } from "../../Store/ActionCreators/UserActionCreator";
+import { signIn, userDataPayload } from "../../Store/ActionCreators/UserActionCreators";
 import { UserState } from "../../Store/Reducers/UserReducer";
 import { rootReducerType } from "../../Store/Store";
 import './HomeView.css';

@@ -7,8 +7,6 @@ import { constants } from './Utils/Constants';
 import HomeView from './Views/HomeView/HomeView';
 import SignView from './Views/SignView/SignView';
 
-export const userContext = React.createContext({auth: false, username: ''});
-
 const App = () => {
   return (
     <Provider store={store}>

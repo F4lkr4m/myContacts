@@ -5,7 +5,7 @@ interface ButtonI {
   icon?: string;
   label?: string;
   wide?: boolean;
-  onClick?: () => void; 
+  onClick?: (event: React.MouseEvent) => void; 
 }
 
 const Button = (props: ButtonI) => {

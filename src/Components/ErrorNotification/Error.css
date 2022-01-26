@@ -1,0 +1,13 @@
+.error {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+
+  width: 100%;
+
+  background-color: #F44336;
+  padding: 16px;
+  border-radius: 8px;
+
+  color: white;
+}

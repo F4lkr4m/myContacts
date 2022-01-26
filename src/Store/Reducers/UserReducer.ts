@@ -1,4 +1,4 @@
-import { UserActionsTypes } from "../ActionCreators/UserActionCreator";
+import { UserActionsTypes } from "../ActionCreators/UserActionCreators";
 import { userActions } from "../Actions/UserActions";
 
 export interface UserState {
