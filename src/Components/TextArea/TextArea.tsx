@@ -3,7 +3,7 @@ import './TextArea.css';
 
 interface TextAreaI {
   placeholder?: string;
-  onChange?: () => void;
+  onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 const TextArea = (props: TextAreaI) => {
