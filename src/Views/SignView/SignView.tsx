@@ -18,8 +18,6 @@ const SignView = (props: SignViewI) => {
     return (<Navigate to={constants.appPaths.home} />);
   }
 
-  console.log(props.user.auth);
-
   return (
     <div className="sign-view">
       <div className="sign-view__logo">

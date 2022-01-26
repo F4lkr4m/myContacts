@@ -12,6 +12,7 @@ import { rootReducerType } from "../../Store/Store";
 import { addContact, contactPayload, deleteContact, editContact } from "../../Store/ActionCreators/ContactsActionCreators";
 import { connect } from "react-redux";
 import { Contact } from "../../Store/Reducers/ContactsReducer";
+import { search } from "../../Utils/LiveSearch";
 
 interface ContactListI {
   contacts: Array<Contact>,
@@ -22,6 +23,7 @@ interface ContactListI {
 
 const ContactList = (props: ContactListI) => {
   const [modal, setModal] = useState(<></>);
+  const [hideIds, setHideIds] = useState(new Set());
 
   const openAddModal = () => {
     setModal(<ContactModal 
@@ -58,6 +60,10 @@ const ContactList = (props: ContactListI) => {
     }
   }
 
+  const searchHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setHideIds(search(event.currentTarget.value, props.contacts));
+  }
+
   const deleteContact = (id: string) => {
     return () => {
       props.delete(id);
@@ -68,23 +74,26 @@ const ContactList = (props: ContactListI) => {
     <div className="contact-list">
       <Fonts type="h1" text="Ваша контактная книжка" />
       <div className="contact-list__search-box">
-        <Input type="text" placeholder="Найти контакт" />
-        <Button label="Найти" icon={searchSvg} />
+        <Input onChange={searchHandler}  type="text" placeholder="Найти контакт" />
+        {/* <Button label="Найти" icon={searchSvg} /> */}
       </div>
       <Button onClick={openAddModal} label="Добавить контакт" />
       <ul className="contact-list__ul">
       {props.contacts.map((contact) => {
-        return (
-          <li id={contact.id} className="contact-list__item">
-            <Fonts type="h4" text={`${contact.name} ${contact.surname}`} />
-            <Fonts type="p" text={contact.tel} />
-            <Fonts type="p" text={contact.desc} />
-            <div className="contact-list__item-row">
-              <Button onClick={openEditModal(contact)} icon={editSvg} label="Редактировать" />
-              <Button onClick={deleteContact(contact.id)}icon={deleteSvg} label="Удалить" />
-            </div>
-          </li>
-        )
+        if (!hideIds.has(contact.id)) {
+          return (
+            <li id={contact.id} className="contact-list__item">
+              <Fonts type="h4" text={`${contact.name} ${contact.surname}`} />
+              <Fonts type="p" text={contact.tel} />
+              <Fonts type="p" text={contact.desc} />
+              <div className="contact-list__item-row">
+                <Button onClick={openEditModal(contact)} icon={editSvg} label="Редактировать" />
+                <Button onClick={deleteContact(contact.id)}icon={deleteSvg} label="Удалить" />
+              </div>
+            </li>
+          )
+        }
+        return <></>
       })}
       </ul>
       {modal}

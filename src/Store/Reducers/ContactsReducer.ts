@@ -1,3 +1,4 @@
+import { getId } from "../../Utils/IdGenerator";
 import { contactsActionTypes } from "../ActionCreators/ContactsActionCreators"
 import { contactsActions } from "../Actions/ContactsAction";
 
@@ -18,6 +19,10 @@ let initialContactsState: ContactsState = {
 };
 if (localStorage['contacts']) {
   initialContactsState.contacts = JSON.parse(localStorage['contacts']);
+  initialContactsState.contacts.forEach((contact) => {
+    contact.id = getId();
+    return contact;
+  });
 }
 
 
