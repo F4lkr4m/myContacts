@@ -2,6 +2,8 @@ import { Dispatch } from "redux";
 import { userActions } from "../Actions/UserActions"
 import { alertSignIn, alertSignUp, clearAlert } from "./AlertActionCreators";
 import { validatePassword, validatePasswordWithRepeat, validateUsername } from "../../Utils/Validation";
+import { apiSignIn, apiSignUp } from "../../Utils/Api";
+import { constants } from "../../Utils/Constants";
 
 
 // USER DATA PAYLOAD FROM FORMS
@@ -55,14 +57,19 @@ export const signIn = (payload: userDataPayload) => {
       dispatch(alertSignIn(passwordValidation.message));
       return;
     }
-
-    // const result = await fetch('http://127.0.0.1/signin');
-    // console.log(result);
     // Clear if all is ok
     dispatch(clearAlert());
-    setTimeout(() => {
-      dispatch(userSignInAC(payload.username));
-    }, 1000);
+
+    try {
+      const result = await apiSignIn(payload.username, payload.password);
+      if (result.status === 201) {
+        dispatch(userSignInAC(payload.username));
+      } else {
+        dispatch(alertSignIn(constants.errorsMessages.smthWentWrong));
+      }
+    } catch {
+      dispatch(alertSignIn(constants.errorsMessages.smthWentWrong));
+    }
   };
 }
 
@@ -78,12 +85,19 @@ export const signUp = (payload: userDataSignUpPayload) => {
       dispatch(alertSignUp(passwordsValidation.message));
       return;
     }
-
-    // Clear if all is ok
+    // clear if all is ok
     dispatch(clearAlert());
-    setTimeout(() => {
-      dispatch(userSignInAC(payload.username));
-    }, 1000);
+
+    try {
+      const result = await apiSignUp(payload.username, payload.password);
+      if (result.status === 201) {
+        dispatch(userSignInAC(payload.username));
+      } else {
+        dispatch(alertSignUp(constants.errorsMessages.smthWentWrong));
+      }
+    } catch {
+      dispatch(alertSignUp(constants.errorsMessages.smthWentWrong));
+    }
   };
 }
 
