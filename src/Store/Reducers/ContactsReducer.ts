@@ -14,7 +14,7 @@ export interface ContactsState {
   contacts: Array<Contact>;
 }
 
-let initialContactsState: ContactsState = {
+const initialContactsState: ContactsState = {
   contacts: [],
 };
 if (localStorage['contacts']) {

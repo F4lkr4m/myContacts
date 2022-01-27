@@ -10,12 +10,14 @@ export const apiSignIn = (username: string, password: string) => {
       'Content-Type': 'application/json;',
     },
     mode: 'cors',
-    body: JSON.stringify({ body: 'kek' }),
+    body: JSON.stringify({
+      username: username,
+      password: password,
+    }),
   });
 };
 
 export const apiSignUp = (username: string, password: string) => {
-  console.log({ username: username, password: password });
   return fetch(constants.serverAddress + constants.apiPaths.signup, {
     method: 'post',
     mode: 'cors',
