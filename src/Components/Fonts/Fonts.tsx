@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import './Fonts.css';
 
 interface FontsI {
@@ -8,11 +8,7 @@ interface FontsI {
 }
 
 const Fonts = (props: FontsI) => {
-  return (
-    <props.type className={`${props.color ? 'font_' + props.color : ''}`}>
-      {props.text}
-    </props.type>
-  )
-}
+  return <props.type className={`${props.color ? 'font_' + props.color : ''}`}>{props.text}</props.type>;
+};
 
 export default Fonts;

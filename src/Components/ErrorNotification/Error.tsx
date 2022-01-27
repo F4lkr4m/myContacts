@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import './Error.css';
 
 interface ErrorI {
@@ -6,12 +6,7 @@ interface ErrorI {
 }
 
 const Error = (props: ErrorI) => {
-  return (
-    <>
-      {props.message && props.message !== '' && <div className="error">
-        {props.message}
-      </div>}
-    </>)
-}
+  return <>{props.message && props.message !== '' && <div className="error">{props.message}</div>}</>;
+};
 
 export default Error;

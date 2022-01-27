@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import Button from "../../Button/Button";
-import Fonts from "../../Fonts/Fonts";
-import Input from "../../Input/Input";
-import Error from "../../ErrorNotification/Error";
+import React, { useState } from 'react';
+import Button from '../../Button/Button';
+import Fonts from '../../Fonts/Fonts';
+import Input from '../../Input/Input';
+import Error from '../../ErrorNotification/Error';
 import '../Forms.css';
-import { rootReducerType } from "../../../Store/Store";
-import { connect } from "react-redux";
-import { signUp, userDataSignUpPayload } from "../../../Store/ActionCreators/UserActionCreators";
-import { bindActionCreators, Dispatch } from "redux";
+import { rootReducerType } from '../../../Store/Store';
+import { connect } from 'react-redux';
+import { signUp, userDataSignUpPayload } from '../../../Store/ActionCreators/UserActionCreators';
+import { bindActionCreators, Dispatch } from 'redux';
 
 interface SignUpFormI {
   error: string;
@@ -29,7 +29,7 @@ const SignUpForm = (props: SignUpFormI) => {
 
   const passwordRepeatHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRepeatPassword(event.currentTarget.value);
-  }
+  };
 
   const signUpHandler = (event: React.MouseEvent) => {
     event.preventDefault();
@@ -39,7 +39,7 @@ const SignUpForm = (props: SignUpFormI) => {
       password: password,
       repeatPassword: repeatPassword,
     });
-  }
+  };
 
   return (
     <form className="form">
@@ -47,22 +47,22 @@ const SignUpForm = (props: SignUpFormI) => {
       <Input type="text" onChange={usernameHandler} placeholder="username" />
       <Input type="password" onChange={passwordHandler} placeholder="password" />
       <Input type="password" onChange={passwordRepeatHandler} placeholder="password repeat" />
-      <Error message={props.error}/>
+      <Error message={props.error} />
       <Button onClick={signUpHandler} label="Создать аккаунт" />
     </form>
-  )
-}
+  );
+};
 
 const mapStateToProps = (combinedReducer: rootReducerType) => {
   return {
     error: combinedReducer.alertReducer.signUpMessage,
   };
-}
+};
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     signUp: bindActionCreators(signUp, dispatch),
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);

@@ -11,17 +11,11 @@ const App = () => {
   return (
     <Provider store={store}>
       <Routes>
-        <Route 
-          path={constants.appPaths.sign} 
-          element={<SignView />}
-        />
-        <Route 
-          path={constants.appPaths.home} 
-          element={<HomeView />}
-        />
+        <Route path={constants.appPaths.sign} element={<SignView />} />
+        <Route path={constants.appPaths.home} element={<HomeView />} />
       </Routes>
     </Provider>
   );
-}
+};
 
 export default App;

@@ -1,5 +1,5 @@
-import isStrongPassword from "validator/lib/isStrongPassword";
-import { constants } from "./Constants";
+import isStrongPassword from 'validator/lib/isStrongPassword';
+import { constants } from './Constants';
 
 export interface ValidationResult {
   isOk: boolean;
@@ -16,7 +16,7 @@ export const validatePassword = (password: string): ValidationResult => {
   return {
     isOk: true,
     message: '',
-  }
+  };
 };
 
 export const validatePasswordWithRepeat = (password: string, repeat: string): ValidationResult => {
@@ -35,7 +35,7 @@ export const validatePasswordWithRepeat = (password: string, repeat: string): Va
     isOk: true,
     message: '',
   };
-}
+};
 
 export const validateUsername = (username: string): ValidationResult => {
   if (username.length < constants.usernameValidationOpts.length) {
@@ -47,5 +47,5 @@ export const validateUsername = (username: string): ValidationResult => {
   return {
     isOk: true,
     message: '',
-  }
-}
+  };
+};

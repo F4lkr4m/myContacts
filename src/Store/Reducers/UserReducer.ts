@@ -1,5 +1,5 @@
-import { UserActionsTypes } from "../ActionCreators/UserActionCreators";
-import { userActions } from "../Actions/UserActions";
+import { UserActionsTypes } from '../ActionCreators/UserActionCreators';
+import { userActions } from '../Actions/UserActions';
 
 export interface UserState {
   auth: boolean;
@@ -12,13 +12,13 @@ const initialUserState: UserState = {
 };
 
 export const userReducer = (state: UserState = initialUserState, action: UserActionsTypes): UserState => {
-  switch(action.type) {
+  switch (action.type) {
     case userActions.USER_SIGNIN: {
       return {
         auth: true,
         username: action.payload,
       };
-    } 
+    }
     case userActions.USER_LOGOUT: {
       return {
         auth: false,

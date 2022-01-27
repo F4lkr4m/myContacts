@@ -1,13 +1,12 @@
-import { Dispatch } from "redux";
-import { userActions } from "../Actions/UserActions"
-import { alertSignIn, alertSignUp, clearAlert } from "./AlertActionCreators";
-import { validatePassword, validatePasswordWithRepeat, validateUsername } from "../../Utils/Validation";
-import { apiSignIn, apiSignUp } from "../../Utils/Api";
-import { constants } from "../../Utils/Constants";
-
+import { Dispatch } from 'redux';
+import { userActions } from '../Actions/UserActions';
+import { alertSignIn, alertSignUp, clearAlert } from './AlertActionCreators';
+import { validatePassword, validatePasswordWithRepeat, validateUsername } from '../../Utils/Validation';
+import { apiSignIn, apiSignUp } from '../../Utils/Api';
+import { constants } from '../../Utils/Constants';
 
 // USER DATA PAYLOAD FROM FORMS
-export  interface userDataPayload {
+export interface userDataPayload {
   username: string;
   password: string;
 }
@@ -41,7 +40,7 @@ const userSignInAC = (username: string) => {
 const userLogOutAC = () => {
   const action: userLogOutAction = {
     type: userActions.USER_LOGOUT,
-  }
+  };
   return action;
 };
 
@@ -71,7 +70,7 @@ export const signIn = (payload: userDataPayload) => {
       dispatch(alertSignIn(constants.errorsMessages.smthWentWrong));
     }
   };
-}
+};
 
 export const signUp = (payload: userDataSignUpPayload) => {
   return async (dispatch: Dispatch) => {
@@ -99,13 +98,13 @@ export const signUp = (payload: userDataSignUpPayload) => {
       dispatch(alertSignUp(constants.errorsMessages.smthWentWrong));
     }
   };
-}
+};
 
 export const logOut = () => {
   return (dispatch: Dispatch) => {
     dispatch(userLogOutAC());
   };
-}
+};
 
 // EXPORT ACTION INTERFACES
 

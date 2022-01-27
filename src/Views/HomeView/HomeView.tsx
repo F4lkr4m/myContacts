@@ -1,14 +1,14 @@
-import React from "react";
-import { connect } from "react-redux";
-import { bindActionCreators, Dispatch } from "redux";
-import Button from "../../Components/Button/Button";
-import ContactList from "../../Components/ContactList/ContactList";
-import Fonts from "../../Components/Fonts/Fonts";
-import { logOut } from "../../Store/ActionCreators/UserActionCreators";
-import { UserState } from "../../Store/Reducers/UserReducer";
-import { rootReducerType } from "../../Store/Store";
+import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
+import Button from '../../Components/Button/Button';
+import ContactList from '../../Components/ContactList/ContactList';
+import Fonts from '../../Components/Fonts/Fonts';
+import { logOut } from '../../Store/ActionCreators/UserActionCreators';
+import { UserState } from '../../Store/Reducers/UserReducer';
+import { rootReducerType } from '../../Store/Store';
 import './HomeView.css';
-import { constants } from "../../Utils/Constants";
+import { constants } from '../../Utils/Constants';
 import { Navigate } from 'react-router-dom';
 
 interface HomeViewI {
@@ -22,7 +22,7 @@ const HomeView = (props: HomeViewI) => {
   };
 
   if (!props.user.auth) {
-    return (<Navigate to={constants.appPaths.sign} />);
+    return <Navigate to={constants.appPaths.sign} />;
   }
 
   return (
@@ -35,22 +35,22 @@ const HomeView = (props: HomeViewI) => {
         <ContactList />
       </main>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = (combinedReducer: rootReducerType) => {
   return {
     user: {
       auth: combinedReducer.userReducer.auth,
       username: combinedReducer.userReducer.username,
-    }
+    },
   };
-}
+};
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     logOutUser: bindActionCreators(logOut, dispatch),
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeView);

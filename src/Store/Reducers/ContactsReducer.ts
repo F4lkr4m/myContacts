@@ -1,6 +1,6 @@
-import { getId } from "../../Utils/IdGenerator";
-import { contactsActionTypes } from "../ActionCreators/ContactsActionCreators"
-import { contactsActions } from "../Actions/ContactsAction";
+import { getId } from '../../Utils/IdGenerator';
+import { contactsActionTypes } from '../ActionCreators/ContactsActionCreators';
+import { contactsActions } from '../Actions/ContactsAction';
 
 export interface Contact {
   id: string;
@@ -25,14 +25,16 @@ if (localStorage['contacts']) {
   });
 }
 
-
-export const contactsReducer = (state: ContactsState = initialContactsState, action: contactsActionTypes): ContactsState => {
-  switch(action.type) {
+export const contactsReducer = (
+  state: ContactsState = initialContactsState,
+  action: contactsActionTypes,
+): ContactsState => {
+  switch (action.type) {
     case contactsActions.UPDATE_CONTACTS: {
       localStorage['contacts'] = JSON.stringify(action.payload.contacts);
       return action.payload;
     }
-    default: 
+    default:
       return state;
   }
-}
+};

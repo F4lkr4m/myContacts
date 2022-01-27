@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import './TextArea.css';
 
 interface TextAreaI {
@@ -9,14 +9,13 @@ interface TextAreaI {
 
 const TextArea = (props: TextAreaI) => {
   return (
-    <textarea 
+    <textarea
       className="textarea"
       placeholder={props.placeholder}
       value={props.value}
-      onChange={props.onChange}>
-
-    </textarea>
-  )
-}
+      onChange={props.onChange}
+    ></textarea>
+  );
+};
 
 export default TextArea;

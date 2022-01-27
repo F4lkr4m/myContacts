@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { contactPayload } from "../../Store/ActionCreators/ContactsActionCreators";
-import Button from "../Button/Button";
-import Fonts from "../Fonts/Fonts";
-import Input from "../Input/Input";
-import TextArea from "../TextArea/TextArea";
+import React, { useState } from 'react';
+import { contactPayload } from '../../Store/ActionCreators/ContactsActionCreators';
+import Button from '../Button/Button';
+import Fonts from '../Fonts/Fonts';
+import Input from '../Input/Input';
+import TextArea from '../TextArea/TextArea';
 import './ContactModal.css';
 
 interface ContactModalI {
@@ -12,11 +12,11 @@ interface ContactModalI {
   title: string;
   buttonLabel: string;
   initValue?: {
-    name?: string,
-    surname?: string,
-    desc?: string,
-    tel?: string,
-  }
+    name?: string;
+    surname?: string;
+    desc?: string;
+    tel?: string;
+  };
 }
 
 const ContactModal = (props: ContactModalI) => {
@@ -31,7 +31,7 @@ const ContactModal = (props: ContactModalI) => {
   const nameHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.currentTarget.value);
   };
-  
+
   const surnameHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSurname(event.currentTarget.value);
   };
@@ -44,7 +44,7 @@ const ContactModal = (props: ContactModalI) => {
     setDesc(event.currentTarget.value);
   };
 
-  const buttonSubmitHandler = (event: React.MouseEvent) => {
+  const buttonSubmitHandler = () => {
     props.onSubmit({
       name: name,
       surname: surname,
@@ -52,7 +52,7 @@ const ContactModal = (props: ContactModalI) => {
       desc: desc,
     });
     props.onClose();
-  }
+  };
 
   return (
     <div className="modal-wrapper modal--open">
@@ -61,14 +61,14 @@ const ContactModal = (props: ContactModalI) => {
           <Fonts type="h4" text={props.title} />
           <Button onClick={props.onClose} label="Закрыть" />
         </div>
-      <Input value={name} onChange={nameHandler} type="text" placeholder="Имя" />
-      <Input value={surname} onChange={surnameHandler} type="text" placeholder="Фамилия" />
-      <Input value={tel} onChange={telHandler} type="tel" placeholder="Телефон" />
-      <TextArea value={desc} onChange={descHandler} placeholder="Заметка контакта" />
-      <Button onClick={buttonSubmitHandler} label={props.buttonLabel} />
+        <Input value={name} onChange={nameHandler} type="text" placeholder="Имя" />
+        <Input value={surname} onChange={surnameHandler} type="text" placeholder="Фамилия" />
+        <Input value={tel} onChange={telHandler} type="tel" placeholder="Телефон" />
+        <TextArea value={desc} onChange={descHandler} placeholder="Заметка контакта" />
+        <Button onClick={buttonSubmitHandler} label={props.buttonLabel} />
+      </div>
     </div>
-    </div>
-  )
-}
+  );
+};
 
 export default ContactModal;

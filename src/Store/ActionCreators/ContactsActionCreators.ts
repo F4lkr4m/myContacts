@@ -1,9 +1,8 @@
-import { Dispatch } from "redux"
-import { getId } from "../../Utils/IdGenerator"
-import { contactsActions } from "../Actions/ContactsAction"
-import { Contact, ContactsState } from "../Reducers/ContactsReducer"
-import { rootReducerType } from "../Store"
-
+import { Dispatch } from 'redux';
+import { getId } from '../../Utils/IdGenerator';
+import { contactsActions } from '../Actions/ContactsAction';
+import { Contact, ContactsState } from '../Reducers/ContactsReducer';
+import { rootReducerType } from '../Store';
 
 export interface contactPayload {
   name: string;
@@ -18,17 +17,14 @@ interface updateContactsAction {
   payload: ContactsState;
 }
 
-
 // ACTION CREATORS
 const updateContacts = (payload: ContactsState) => {
   const action: updateContactsAction = {
     type: contactsActions.UPDATE_CONTACTS,
     payload: payload,
-  }
+  };
   return action;
-}
-
-
+};
 
 export const addContact = (payload: contactPayload) => {
   return (dispatch: Dispatch, getState: () => rootReducerType) => {
@@ -38,9 +34,9 @@ export const addContact = (payload: contactPayload) => {
       ...payload,
     });
 
-    dispatch(updateContacts({contacts: currentContacts}));
-  }
-}
+    dispatch(updateContacts({ contacts: currentContacts }));
+  };
+};
 
 export const editContact = (payload: Contact) => {
   return (dispatch: Dispatch, getState: () => rootReducerType) => {
@@ -50,19 +46,19 @@ export const editContact = (payload: Contact) => {
       }
       return contact;
     });
-    
-    dispatch(updateContacts({contacts: currentContacts}));
-  }
-}
+
+    dispatch(updateContacts({ contacts: currentContacts }));
+  };
+};
 
 export const deleteContact = (id: string) => {
   return (dispatch: Dispatch, getState: () => rootReducerType) => {
     const currentContacts = getState().contactsReducer.contacts.filter((contact) => {
       return contact.id !== id;
     });
-    
-    dispatch(updateContacts({contacts: currentContacts}));
-  }
-}
+
+    dispatch(updateContacts({ contacts: currentContacts }));
+  };
+};
 
 export type contactsActionTypes = updateContactsAction;

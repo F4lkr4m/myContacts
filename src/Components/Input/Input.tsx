@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import './Input.css';
 
 interface InputI {
@@ -12,15 +12,16 @@ interface InputI {
 const Input = (props: InputI) => {
   return (
     <label className={'input__label'}>
-      <input 
+      <input
         className={'input'}
-        type={props.type} 
+        type={props.type}
         placeholder={props.placeholder}
-        value={props.value} 
-        onChange={props.onChange} 
-        onBlur={props.onBlur} />
+        value={props.value}
+        onChange={props.onChange}
+        onBlur={props.onBlur}
+      />
     </label>
-  )
-}
+  );
+};
 
 export default Input;

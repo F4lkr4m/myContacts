@@ -16,5 +16,5 @@ export const constants = {
   apiPaths: {
     signin: '/signin',
     signup: '/signup',
-  }
-}
+  },
+};
