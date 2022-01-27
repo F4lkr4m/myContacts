@@ -3,7 +3,6 @@ import Button from "../Button/Button";
 import Fonts from "../Fonts/Fonts";
 import Input from "../Input/Input";
 import './ContactList.css';
-import searchSvg from '../../Assets/search.svg';
 import editSvg from '../../Assets/edit.svg';
 import deleteSvg from '../../Assets/delete.svg';
 import ContactModal from "../ContactModal/ContactModal";
@@ -75,7 +74,6 @@ const ContactList = (props: ContactListI) => {
       <Fonts type="h1" text="Ваша контактная книжка" />
       <div className="contact-list__search-box">
         <Input onChange={searchHandler}  type="text" placeholder="Найти контакт" />
-        {/* <Button label="Найти" icon={searchSvg} /> */}
       </div>
       <Button onClick={openAddModal} label="Добавить контакт" />
       <ul className="contact-list__ul">
