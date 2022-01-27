@@ -13,7 +13,7 @@ export const search = (searchValue: string, contacts: Array<Contact>) => {
           contact.desc.toLowerCase().search(value) === -1) {
         hideIds.add(contact.id);
       }
-    })
+    });
   }
   return hideIds;
 }

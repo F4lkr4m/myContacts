@@ -1,5 +1,9 @@
 import { Dispatch } from "redux";
 import { userActions } from "../Actions/UserActions"
+import { alertSignIn, alertSignUp, clearAlert } from "./AlertActionCreators";
+
+import isStrongPassword from 'validator/lib/isStrongPassword';
+import { validatePassword, validatePasswordWithRepeat, validateUsername } from "../../Utils/Validation";
 
 
 // USER DATA PAYLOAD FROM FORMS
@@ -43,8 +47,20 @@ const userLogOutAC = () => {
 
 export const signIn = (payload: userDataPayload) => {
   return (dispatch: Dispatch) => {
+    const usernameValidation = validateUsername(payload.username);
+    if (!usernameValidation.isOk) {
+      dispatch(alertSignIn(usernameValidation.message));
+      return;
+    }
+    const passwordValidation = validatePassword(payload.password);
+    if (!passwordValidation.isOk) {
+      dispatch(alertSignIn(passwordValidation.message));
+      return;
+    }
+
+    // Clear if all is ok
+    dispatch(clearAlert());
     setTimeout(() => {
-      console.log('DISPATCH');
       dispatch(userSignInAC(payload.username));
     }, 1000);
   };
@@ -52,6 +68,19 @@ export const signIn = (payload: userDataPayload) => {
 
 export const signUp = (payload: userDataSignUpPayload) => {
   return (dispatch: Dispatch) => {
+    const usernameValidation = validateUsername(payload.username);
+    if (!usernameValidation.isOk) {
+      dispatch(alertSignUp(usernameValidation.message));
+      return;
+    }
+    const passwordsValidation = validatePasswordWithRepeat(payload.password, payload.repeatPassword);
+    if (!passwordsValidation.isOk) {
+      dispatch(alertSignUp(passwordsValidation.message));
+      return;
+    } 
+
+    // Clear if all is ok
+    dispatch(clearAlert());
     setTimeout(() => {
       dispatch(userSignInAC(payload.username));
     }, 1000);
